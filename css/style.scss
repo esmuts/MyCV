@@ -1,0 +1,389 @@
+/*
+  I consulted the following websites for guidance:
+
+  Fitting text to container –
+  https://css-tricks.com/fitting-text-to-a-container/
+  Animating borders –
+  https://stackoverflow.com/questions/30228269/animating-the-border-in-css
+  https://codepen.io/chancesq/pen/qBOyQoW
+*/
+
+// Font import from Google Fonts (Montserrat, Reenie Beanie)
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
+
+// Color variables
+
+// General layout and style
+
+body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 60vh 40vh auto auto 90vh 85vh;
+  grid-gap: 1rem;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  color: black;
+  background-color: #ffc14d;
+  // background-color: rgb(255, 179, 71);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(167, 166, 166);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// Style and layout for navigation area
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4rem;
+  width: 100vw;
+  z-index: 10;
+}
+
+.nav-bar i {
+  font-size: 2rem;
+  position: absolute;
+  top: 1rem;
+  right: 4vw;
+  cursor: pointer;
+}
+
+.menu-box {
+  position: absolute;
+  right: 15vw;
+  top: 1.6rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.menu-dropdown {
+  display: inline;
+}
+
+.menu-dropdown li {
+  list-style: none;
+  display: inline;
+  margin: 1vw;
+}
+
+.menu-dropdown a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-dropdown a:hover {
+  color: orange;
+}
+
+.menu-show {
+  visibility: visible;
+}
+
+// Header layout and style
+
+header {
+  grid-row: 1;
+  grid-column: 3 / 11;
+  display: flex;
+  margin: auto;
+  gap: 1vw;
+}
+
+#img-profile {
+  max-width: 25vw;
+  max-height: 25vh;
+  border-radius: 50%;
+}
+
+header h1 {
+  margin: auto;
+  font-size: 5vh;
+  transition: color 1200ms ease-out;
+}
+
+// Style an animation for "in-training" title.
+.aside-wrapper {
+  position: relative;
+  margin: auto;
+}
+
+.in-training {
+  font-family: "Reenie Beanie", cursive;
+  font-size: 5vh;
+  left: 50%;
+  top: 100%;
+  width: 100%;
+  position: absolute;
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  #img-profile {
+    max-width: 45vw;
+    margin: auto;
+  }
+  header {
+    margin-top: 15vh;
+    flex-direction: column;
+    position: relative;
+  }
+}
+
+// Style and layout for 'About Me' area
+
+// Target tag for link scrolling.
+#about {
+  grid-row: 3;
+}
+
+.about-me {
+  grid-row: 3;
+  grid-column: 2 / 12;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  padding: 1rem;
+  background-color: #ffc14d;
+  box-shadow: 10px 10px 10px rgb(167, 166, 166);
+}
+
+#img-about-me {
+  width: 40%;
+  object-fit: contain;
+  float: left;
+  padding: 1rem;
+  padding-right: 2rem;
+}
+
+.text-about-me {
+  font-weight: 200;
+  font-size: 1.5vw;
+  color: black;
+  margin-left: 1rem;
+  padding-right: 1rem;
+}
+
+.text-about-me a {
+  color: orangered;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.text-about-me a:hover {
+  color: white;
+}
+
+.icon-rotate {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.icon-rotate i:hover {
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  #img-about-me {
+    grid-column: 2 / 12;
+    max-width: 50%;
+  }
+
+  .text-about-me {
+    grid-column: 2 / 12;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #img-about-me {
+    padding: 1rem;
+  }
+}
+
+// Style and layout for Work Experience Area
+
+// Target tag for link scrolling.
+
+#experience {
+  grid-row: 4;
+}
+
+#work-title {
+  grid-row: 4;
+  grid-column: 4 / 10;
+  text-align: center;
+  font-weight: 300;
+  margin-top: 4vh;
+}
+
+.work-content-box {
+  grid-row: 5;
+  grid-column: 2 / 12;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 25% 25% 25% 25%;
+  justify-items: center;
+  align-items: center;
+  border: 4px solid #ffc14d;
+  margin-bottom: 8vh;
+}
+
+// Empty container shrinks to reveal border around "work-content-box"
+#border-draw-box1,
+#border-draw-box2 {
+  grid-column: 1 / 5;
+  grid-row: 1 / 5;
+  width: 104%;
+  height: 104%;
+  background-color: white;
+  z-index: 3;
+}
+
+// Work experience buttons
+.work-button-wrapper {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+}
+
+.work-button-wrapper button {
+  height: 20px;
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.experience-display {
+  grid-column: 1 / 5;
+  grid-row: 1 / 5;
+  z-index: 3;
+  background-color: white;
+}
+
+.experience-display article {
+  display: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.7vh;
+  overflow: hidden;
+}
+
+.experience-display h3 {
+  text-align: center;
+  font-size: 2vh;
+}
+
+.experience-display a {
+  text-decoration: none;
+  color: orange;
+}
+
+.academic a {
+  color: black;
+}
+
+.freelance p {
+  margin-bottom: 0.1;
+}
+
+.academic a:hover {
+  color: orange;
+}
+
+.coding a:hover {
+  font-weight: 500;
+}
+
+button.hide-content {
+  grid-column: 2 / 4;
+  grid-row: 4;
+  width: 60%;
+  align-self: end;
+  margin-bottom: 1.5rem;
+  z-index: 3;
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .experience-display article {
+    font-size: 1.5vh;
+  }
+}
+
+// Layout and style for "Contact" area
+
+// Target tag for link scrolling.
+#contact {
+  grid-row: 6;
+}
+
+#contact-area {
+  grid-row: 6;
+  grid-column: 3 / 11;
+  text-align: center;
+}
+
+#contact-title {
+  font-weight: 300;
+}
+
+#contact-area h3 {
+  font-weight: 300;
+  margin-bottom: 2rem;
+  font-size: 2.5vh;
+}
+
+.mail-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mail-link:hover {
+  color: orange;
+  font-weight: 400;
+}
+
+.social-icons {
+  font-size: 2rem;
+}
+
+.social-icons i {
+  margin: 0.5rem;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: black;
+}
+
+.social-icons a:hover {
+  opacity: 0.8;
+  color: orange;
+}
+
+// Style and layout for "Footer" area
+
+footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: orange;
+  cursor: pointer;
+}
